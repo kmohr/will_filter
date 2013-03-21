@@ -224,7 +224,7 @@ module WillFilter
     end
   
     def default_order
-      'id'
+      'rownum'
     end
     
     def order
