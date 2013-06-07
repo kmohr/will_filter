@@ -232,7 +232,23 @@ module WillFilter
       @order = default_order unless contains_column?(@order.to_sym)
       @order
     end
-    
+  
+    def order2
+      if !@order2.blank? && !order.blank?
+        @order2
+        @order2 = nil unless contains_column?(@order2.to_sym)
+        @order2
+      end
+    end
+  
+    def order3
+      if !@order3.blank? && !order2.blank? && !order.blank?
+        @order3
+        @order3 = nil unless contains_column?(@order3.to_sym)
+        @order3
+      end
+    end
+  
     def default_order_type
       'desc'
     end
@@ -243,8 +259,32 @@ module WillFilter
       @order_type
     end
   
+    def order_type2
+      if !@order_type2.blank? && !@order_type.blank?
+        @order_type2
+        @order_type2 = nil unless ['asc', 'desc'].include?(@order_type2.to_s)
+        @order_type2
+      end
+    end
+  
+    def order_type3
+      if !@order_type3.blank? && !@order_type2.blank? && !@order_type.blank?
+        @order_type3
+        @order_type3 = nil unless ['asc', 'desc'].include?(@order_type3.to_s)
+        @order_type3
+      end
+    end
+  
     def order_clause
-      "#{order} #{order_type}"
+      if !@order.blank? && !@order2.blank? && !@order3.blank?
+          "#{order} #{order_type}, #{order2} #{order_type2}, #{order3} #{order_type3}"
+        elsif !@order.blank? && !@order2.blank?
+          "#{order} #{order_type}, #{order2} #{order_type2}"
+        elsif !order.blank?
+          "#{order} #{order_type}"
+        else
+          "#{default_order} #{default_order_type}"
+      end
     end
   
     def column_sorted?(key)
@@ -276,7 +316,7 @@ module WillFilter
     end
     
     def order_type_options
-      [["desc", "desc"], ["asc", "asc"]]
+      [["", ""], ["desc", "desc"], ["asc", "asc"]]
     end
   
     #############################################################################
@@ -289,14 +329,15 @@ module WillFilter
     
     def condition_options
       @condition_options ||= begin
-        opts = []
-        definition.keys.each do |cond|
-          opts << [condition_title_for(cond), cond.to_s]
+          opts = []
+          opts << ["", ""]
+          definition.keys.each do |cond|
+            opts << [condition_title_for(cond), cond.to_s]
+          end
+          opts.sort_by{ |i| i[0] }
         end
-        opts.sort_by{ |i| i[0] }
-      end
     end
-    
+  
     def operator_options_for(condition_key)
       condition_key = condition_key.to_sym if condition_key.is_a?(String)
       
@@ -419,7 +460,11 @@ module WillFilter
       params[:wf_match]         = match
       params[:wf_model]         = model_class_name
       params[:wf_order]         = order
+      params[:wf_order2]        = order2
+      params[:wf_order3]        = order3
       params[:wf_order_type]    = order_type
+      params[:wf_order_type2]   = order_type2
+      params[:wf_order_type3]   = order_type3
       params[:wf_per_page]      = per_page
       params[:wf_export_fields] = fields.join(',')
       params[:wf_export_format] = format
@@ -469,7 +514,11 @@ module WillFilter
       @per_page             = params[:wf_per_page]    || default_per_page
       @page                 = params[:page]           || 1
       @order_type           = params[:wf_order_type]  || default_order_type
+      @order_type2          = params[:wf_order_type2]
+      @order_type3          = params[:wf_order_type3]
       @order                = params[:wf_order]       || default_order
+      @order2                = params[:wf_order2]
+      @order3                = params[:wf_order3]
       
       self.id   =  params[:wf_id].to_i  unless params[:wf_id].blank?
       self.name =  params[:wf_name]     unless params[:wf_name].blank?
