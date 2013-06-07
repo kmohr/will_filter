@@ -9,7 +9,7 @@
   <%= select_tag(:wf_order3, options_for_select(wf_filter.sort_options, wf_filter.order3), {:onChange=>"markDirty()"}) %>
   <%= select_tag(:wf_order_type3, options_for_select(wf_filter.order_type_options, wf_filter.order_type3), {:onChange=>"markDirty()", :style=>"width:60px"}) %>
   Per Page:
-  <%= select_tag(:wf_per_page, options_for_select(wf_filter.per_page_options, wf_filter.per_page.to_s), {:onChange=>"markDirty()"}) %>
+  <%= select_tag(:wf_per_page, options_for_select(wf_filter.per_page_options, wf_filter.per_page.to_s), {:onChange=>"markDirty()", :style=>"width:60px"}) %>
   &nbsp;&nbsp;
   <%=link_to_function("<span>Submit Filter</span>".html_safe, "wfFilter.submit()", :class => "wf_grey_button wf_pcb") %>
 </div>
