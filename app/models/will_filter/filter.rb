@@ -330,12 +330,22 @@ module WillFilter
     def condition_options
       @condition_options ||= begin
           opts = []
-          opts << ["", ""]
           definition.keys.each do |cond|
             opts << [condition_title_for(cond), cond.to_s]
           end
           opts.sort_by{ |i| i[0] }
         end
+    end
+
+    def sort_options
+      @sort_options ||= begin
+        opts = []
+        opts << ["", ""]
+        definition.keys.each do |cond|
+          opts << [condition_title_for(cond), cond.to_s]
+        end
+        opts.sort_by{ |i| i[0] }
+      end
     end
   
     def operator_options_for(condition_key)
