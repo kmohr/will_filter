@@ -693,8 +693,7 @@ def deserialize_from_params(params)
   def user_filters
     @user_filters ||= begin
       conditions = ["model_class_name = ?", self.model_class_name]
-      conditions[0] << " and user_id = ?"
-      conditions << "null"
+      conditions[0] << " and user_id is null"
       WillFilter::Filter.find(:all, :conditions => conditions)
     end
   end
