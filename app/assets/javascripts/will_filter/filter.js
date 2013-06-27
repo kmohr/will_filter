@@ -174,7 +174,7 @@ Wf.Filter.prototype = {
     });
 	},	
 	loadSavedFilter: function() {
-	  if (Wf.value("wf_key") == "-1" || Wf.value("wf_key") == "-2")
+	  if (Wf.value("wf_key") == "-1" || Wf.value("wf_key") == "-2" || Wf.value("wf_key") == "-3")
 	    return;
 	
 	  this.showSpinner();
