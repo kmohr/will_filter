@@ -22,6 +22,7 @@
   
   <% if wf_filter.show_save_options? %>
     <div class="end">
+      Private Filter? <%= check_box_tag(:wf_private, 'Y') %>
       <%=link_to_function("<span>Save As New...</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
       <% if wf_filter.id %>
         <%=link_to_function("<span>Update</span>".html_safe, "wfFilter.updateFilter()", :class => "wf_grey_button wf_pcb") %>
