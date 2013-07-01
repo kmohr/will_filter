@@ -714,19 +714,19 @@ def deserialize_from_params(params)
       if include_default
         filters = default_filters
         if (filters.size > 0)
-          filters.insert(0, ["Select default filter", "-1"])
+          filters.insert(0, ["DEFAULT FILTERS:", "-1"])
         end
       end
       
       if private_user_filters.any? && WillFilter::Config.user_filters_enabled? && @userid
-        filters << ["Select private filter", "-3"] if include_default
+        filters << ["PRIVATE FILTERS:", "-3"] if include_default
         private_user_filters.each do |filter|
           filters << [filter.name, filter.id.to_s]
         end
       end
       
       if user_filters.any?
-        filters << ["Select public filter", "-2"] if include_default
+        filters << ["PUBLIC FILTERS:", "-2"] if include_default
         user_filters.each do |filter|
           filters << [filter.name, filter.id.to_s]
         end
