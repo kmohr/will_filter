@@ -32,7 +32,7 @@
 
   <% if wf_filter.show_save_options? %>
       <div class="end">
-        <input type="text" class="post_email wf_grey_button" placeholder="Enter Email Address(es)">
+        <input type="text" class="post_email wf_grey_button" id="email" placeholder="Enter Email Address(es)">
         <%= link_to('<span>Queue Query</span>'.html_safe, '/query_queue', :class => "wf_grey_button wf_pcb post_queue_record") %>
         Private Filter? <%= check_box_tag(:wf_private, 'Y') %>
         <%=link_to_function("<span>Save As New...</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
