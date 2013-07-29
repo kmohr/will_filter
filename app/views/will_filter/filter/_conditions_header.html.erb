@@ -14,13 +14,12 @@
 </div>
 
 <div id="post_params" style="display:none">
-  <span id="status">QUEUED</span>
   <span id="title"><%= wf_filter.key %></span>
   <span id="description"><%= wf_filter.key %></span>
   <span id="querysql"><%= wf_filter.results.to_sql.to_s.strip %></span>
-  <span id="originator">RailsQueryBuilder</span>
-  <span id="adddttm"><%= Time.now %></span>
+  <span id="frequency">INSANT</span>
   <span id="addcontactid"><%= session[:encrypted_contact][:contactid] %></span>
+  <span id="modifiedcontactid"><%= session[:encrypted_contact][:contactid] %></span>
 </div>
 
 <div class="header">
@@ -33,6 +32,7 @@
 
   <% if wf_filter.show_save_options? %>
       <div class="end">
+        <input type="text" class="post_email wf_grey_button" placeholder="Enter Email Address(es)">
         <%= link_to('<span>Queue Query</span>'.html_safe, '/query_queue', :class => "wf_grey_button wf_pcb post_queue_record") %>
         Private Filter? <%= check_box_tag(:wf_private, 'Y') %>
         <%=link_to_function("<span>Save As New...</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
