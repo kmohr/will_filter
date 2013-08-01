@@ -26,7 +26,8 @@
 
   <% if wf_filter.show_export_options? %>
       <div class="end" style="padding-left:3px;">
-        <%=link_to_function("<span>Export Data...</span>".html_safe, "wfExporter.show(this)", :class => "wf_grey_button wf_pcb") %>
+        |
+        <%=link_to_function("<span>Export Query Results</span>".html_safe, "wfExporter.show(this)", :class => "wf_grey_button wf_pcb") %>
       </div>
   <% end %>
 
@@ -38,7 +39,7 @@
         <%=link_to_function("<span>Save Query</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
         <% if wf_filter.id %>
             <%=link_to_function("<span>Update Query</span>".html_safe, "wfFilter.updateFilter()", :class => "wf_grey_button wf_pcb") %>
-            <%=link_to_function("<span>Delete Query</span>".html_safe, "wfFilter.deleteFilter()", :class => "wf_grey_button wf_pcb") %> |
+            <%=link_to_function("<span>Delete Query</span>".html_safe, "wfFilter.deleteFilter()", :class => "wf_grey_button wf_pcb") %>
         <% end %>
       </div>
   <% end %>
