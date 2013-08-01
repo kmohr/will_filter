@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aca59bae-4efd-4127-985b-167b3620d416" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/will_filter/filter/_conditions_footer.html.erb" afterPath="$PROJECT_DIR$/app/views/will_filter/filter/_conditions_footer.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/will_filter/filter/_conditions_header.html.erb" afterPath="$PROJECT_DIR$/app/views/will_filter/filter/_conditions_header.html.erb" />
     </list>
     <ignored path="will_filter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,6 +27,7 @@
     <file path="/Gemfile" changelist="aca59bae-4efd-4127-985b-167b3620d416" time="1372113366043" ignored="false" />
     <file path="/filter.rb" changelist="aca59bae-4efd-4127-985b-167b3620d416" time="1372699078442" ignored="false" />
     <file path="$USER_HOME$/cats-ruby/lib/check_time.rb" changelist="aca59bae-4efd-4127-985b-167b3620d416" time="1372798577714" ignored="false" />
+    <file path="/_conditions_header.html.erb" changelist="aca59bae-4efd-4127-985b-167b3620d416" time="1375375941461" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
       <file leaf-file-name="_conditions_header.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/will_filter/filter/_conditions_header.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="26" column="41" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.3171472">
               <folding />
             </state>
           </provider>
@@ -104,6 +104,7 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/will_filter/filter.js" />
         <option value="$PROJECT_DIR$/app/models/will_filter/filter.rb" />
         <option value="$PROJECT_DIR$/app/views/will_filter/filter/_conditions_footer.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/will_filter/filter/_conditions_header.html.erb" />
       </list>
     </option>
   </component>
@@ -738,7 +739,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/will_filter/filter/_conditions_header.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="26" column="41" selection-start="1042" selection-end="1042" vertical-scroll-proportion="0.3171472">
           <folding />
         </state>
       </provider>
