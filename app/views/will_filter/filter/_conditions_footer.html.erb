@@ -11,7 +11,7 @@
   Per Page:
   <%= select_tag(:wf_per_page, options_for_select(wf_filter.per_page_options, wf_filter.per_page.to_s), {:onChange=>"markDirty()", :style=>"width:60px"}) %>
   &nbsp;&nbsp;
-  <%=link_to_function("<span>Submit Filter</span>".html_safe, "wfFilter.submit()", :class => "wf_grey_button wf_pcb") %>
+  <%=link_to_function("<span>Run Query</span>".html_safe, "wfFilter.submit()", :class => "wf_grey_button wf_pcb") %>
 </div>
 <div>
   <%=link_to_function("<span><b>&plus;</b> Add</span>".html_safe, "wfFilter.addCondition()", :class => "wf_grey_button wf_pcb") %>
