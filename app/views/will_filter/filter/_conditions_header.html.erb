@@ -1,5 +1,5 @@
 <div style="margin:0;padding:0;display:inline">
-  <%= hidden_field_tag(:wf_id, wf_filter.id) %>
+  <%= hidden_field_tag(:wf_id, wf_filter.id ||= wf_filter.key) %>
   <%= hidden_field_tag(:wf_type, wf_filter.class.name) %>
   <%= hidden_field_tag(:wf_dirty, "false") %>
   <%= hidden_field_tag(:wf_submitted, "false") %>
@@ -38,6 +38,10 @@
         Private Filter? <%= check_box_tag(:wf_private, 'Y') %>
         <%=link_to_function("<span>Save Query</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
         <% if wf_filter.id %>
+            <%=link_to_function("<span>Update Query</span>".html_safe, "wfFilter.updateFilter()", :class => "wf_grey_button wf_pcb") %>
+            <%=link_to_function("<span>Delete Query</span>".html_safe, "wfFilter.deleteFilter()", :class => "wf_grey_button wf_pcb") %>
+        <% elsif wf_filter.key %>
+            <% wf_filter.id = wf_filter.key %>
             <%=link_to_function("<span>Update Query</span>".html_safe, "wfFilter.updateFilter()", :class => "wf_grey_button wf_pcb") %>
             <%=link_to_function("<span>Delete Query</span>".html_safe, "wfFilter.deleteFilter()", :class => "wf_grey_button wf_pcb") %>
         <% end %>
