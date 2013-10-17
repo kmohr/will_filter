@@ -17,7 +17,6 @@
   <span id="title"><%= wf_filter.key %></span>
   <span id="description"><%= wf_filter.key %></span>
   <span id="querysql"><%= wf_filter.results.to_sql.to_s.strip %></span>
-  <span id="frequency">INSTANT</span>
   <span id="addcontactid"><%= session[:encrypted_contact][:contactid] %></span>
   <span id="modifiedcontactid"><%= session[:encrypted_contact][:contactid] %></span>
 </div>
@@ -33,8 +32,9 @@
 
   <% if wf_filter.show_save_options? %>
       <div class="end">
-        <input type="text" class="post_email wf_grey_button" id="email" placeholder="Enter Email Address(es)">
-        <%= link_to('<span>Queue Query</span>'.html_safe, '/query_queue', :class => "wf_grey_button wf_pcb post_queue_record") %> |
+        <input type="text" class="post_email wf_grey_button" id="email" style="display:none" placeholder="Enter Email Address(es)">
+        <%= link_to('<span>Queue Query</span>'.html_safe, '/query_queue', :class => "wf_grey_button wf_pcb post_queue_record") %>
+        <%= link_to('<span>Show Schedule</span>'.html_safe, '/', :class => "wf_grey_button wf_pcb schedule_record") %> |
         Private Filter? <%= check_box_tag(:wf_private, 'Y') %>
         <%=link_to_function("<span>Save Query</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
         <% if wf_filter.id %>
@@ -54,3 +54,35 @@
     <% end %>
   </div>
 </div>
+
+<div class="header schedule_freq" style="display:none">
+  <div class="body">
+    <% @frequencies = ["Instant", "Monthly", "Weekly", "Daily", "Interval", "Hourly", "OneTime"] %>
+    <% @days = [] %>
+    <% (1..31).each do |d| %>
+        <% @days.push(d) %>
+    <% end %>
+    <% @minutes = [] %>
+    <% (0..59).each do |d| %>
+        <% @minutes.push(d) %>
+    <% end %>
+    <% @hours = [] %>
+    <% (0..23).each do |d| %>
+        <% @hours.push(d) %>
+    <% end %>
+    <% @daysofweek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %>
+    <%= select_tag(:frequency, options_for_select(@frequencies), :prompt => "Frequency", :style => 'width:100px') %>
+    <%=text_field_tag("startdate", "Start Date", :style => 'width:15%; display:none', :onChange => 'wfFilter.fieldChanged(this)')%>
+    <%=link_to_function(image_tag("will_filter/calendar.png", :title => "Select start date", :class => "wf_calendar_trigger", :id => "startdatecal", :style => "display:none"), "wfCalendar.selectDate('startdate', this)")%>
+    <%=text_field_tag("enddate", "End Date", :style => 'width:15%; display:none', :onChange => 'wfFilter.fieldChanged(this)')%>
+    <%=link_to_function(image_tag("will_filter/calendar.png", :title => "Select end date", :class => "wf_calendar_trigger", :id => "enddatecal", :style => "display:none"), "wfCalendar.selectDate('enddate', this)")%>
+    <div class="end">
+      <%= select_tag(:dayofmonth, options_for_select(@days), :prompt=> "Day of Month", :style => 'width:120px; display:none') %>
+      <%= select_tag(:dayofweek, options_for_select(@daysofweek), :prompt=> "Day of Week", :style => 'width:110px; display:none') %>
+      <%= select_tag(:hour, options_for_select(@hours), :prompt=> "Hour", :style => 'width:80px; display:none') %>
+      <%= select_tag(:minute, options_for_select(@minutes), :prompt=> "Minute", :style => 'width:80px; display:none') %>
+    </div>
+    <br />
+  </div>
+</div>
+<br />
