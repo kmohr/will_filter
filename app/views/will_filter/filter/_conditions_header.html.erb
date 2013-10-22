@@ -11,6 +11,7 @@
 
   <%= hidden_field_tag(:wf_export_format, "") %>
   <%= hidden_field_tag(:wf_export_fields, "") %>
+  <%= hidden_field_tag(:wf_userid, "") %>
 </div>
 
 <div id="post_params" style="display:none">
@@ -36,7 +37,7 @@
         <%= link_to('<span>Queue Query</span>'.html_safe, '/query_queue', :class => "wf_grey_button wf_pcb post_queue_record") %>
         <%= link_to('<span>Show Schedule</span>'.html_safe, '/', :class => "wf_grey_button wf_pcb schedule_record") %> |
         Private Filter? <%= check_box_tag(:wf_private, "Y", Filter.get_private(wf_filter.key)) %>
-        <%=link_to_function("<span>Save Query</span>".html_safe, "wfFilter.saveFilter()", :class => "wf_grey_button wf_pcb") %>
+        <%=link_to_function("<span>Save Query</span>".html_safe, "wfFilter.saveFilter(" + session[:encrypted_contact][:id].to_s + ")", :class => "wf_grey_button wf_pcb") %>
         <% if wf_filter.id %>
             <%=link_to_function("<span>Update Query</span>".html_safe, "wfFilter.updateFilter()", :class => "wf_grey_button wf_pcb") %>
             <%=link_to_function("<span>Delete Query</span>".html_safe, "wfFilter.deleteFilter()", :class => "wf_grey_button wf_pcb") %>
@@ -49,8 +50,8 @@
   <% end %>
 
   <div>
-    <% unless wf_filter.saved_filters.empty? %>
-        <%= select_tag(:wf_key, options_for_select(wf_filter.saved_filters, wf_filter.key), {:onChange=>"wfFilter.loadSavedFilter()"}) %>
+    <% unless wf_filter.saved_filters(session[:encrypted_contact][:id]).empty? %>
+        <%= select_tag(:wf_key, options_for_select(wf_filter.saved_filters(session[:encrypted_contact][:id]), wf_filter.key), {:onChange=>"wfFilter.loadSavedFilter()"}) %>
     <% end %>
   </div>
 </div>
