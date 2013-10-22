@@ -699,16 +699,17 @@ module WillFilter
       end
     end
 
-    def private_user_filters
+    def private_user_filters(id)
       @private_user_filters ||= begin
         conditions = ["model_class_name = ?", self.model_class_name]
         conditions[0] << " and user_id = ? "
-        conditions << @userid.to_i
+        conditions << id.to_i
         WillFilter::Filter.find(:all, :conditions => conditions)
       end
     end
 
-    def saved_filters(include_default = true)
+    def saved_filters(id)
+      include_default = true
       @saved_filters ||= begin
         filters = []
 
@@ -719,9 +720,9 @@ module WillFilter
           end
         end
 
-        if private_user_filters.any? && WillFilter::Config.user_filters_enabled? && @userid
+        if private_user_filters(id).any? && WillFilter::Config.user_filters_enabled?
           filters << ["* SELECT PRIVATE FILTER:", "-3"] if include_default
-          private_user_filters.each do |filter|
+          private_user_filters(id).each do |filter|
             filters << [filter.name, filter.id.to_s]
           end
         end
@@ -923,5 +924,9 @@ module WillFilter
       model_class.count(column_name, :conditions => sql_conditions)
     end
 
+  end
+
+  def userid
+    @userid
   end
 end
