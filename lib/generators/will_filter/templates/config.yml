@@ -50,7 +50,7 @@ defaults: &defaults
 
   export_options:         
     enabled:              true
-    default_formats:      [html, csv, xml, json]
+    default_formats:      [csv, html, xml]
   
   containers:             # container implementation mapping
     nil:                  WillFilter::Containers::Nil
