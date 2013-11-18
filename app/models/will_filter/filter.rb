@@ -546,7 +546,7 @@ module WillFilter
       end
 
       if params[:wf_export_format].blank?
-        @format = :html
+        @format = :csv
       else
         @format = params[:wf_export_format].to_sym
       end
