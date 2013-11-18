@@ -313,11 +313,11 @@ module WillFilter
     end
 
     def match_options
-      [["all", "all"], ["any", "any"]]
+      [["and", "all"], ["or", "any"]]
     end
 
     def order_type_options
-      [["", ""], ["desc", "desc"], ["asc", "asc"]]
+      [["asc", "asc"],["desc", "desc"]]
     end
 
     #############################################################################
@@ -341,7 +341,6 @@ module WillFilter
     def sort_options
       @sort_options ||= begin
         opts = []
-        opts << ["", ""]
         definition.keys.each do |cond|
           opts << [condition_title_for(cond), cond.to_s]
         end
@@ -796,12 +795,10 @@ module WillFilter
     #############################################################################
     def export_formats
       formats = []
-      formats << ["Generic formats", -1]
       WillFilter::Config.default_export_formats.each do |frmt|
         formats << [frmt, frmt]
       end
       if custom_formats.size > 0
-        formats << ["Custom formats", -2]
         custom_formats.each do |frmt|
           formats << frmt
         end

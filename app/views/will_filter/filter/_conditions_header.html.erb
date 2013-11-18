@@ -51,7 +51,7 @@
 
   <div>
     <% unless wf_filter.saved_filters(session[:encrypted_contact][:id]).empty? %>
-        <%= select_tag(:wf_key, options_for_select(wf_filter.saved_filters(session[:encrypted_contact][:id]), wf_filter.key), {:onChange=>"wfFilter.loadSavedFilter()"}) %>
+        Filter Name: <%= select_tag(:wf_key, options_for_select(wf_filter.saved_filters(session[:encrypted_contact][:id]), wf_filter.key), {:onChange=>"wfFilter.loadSavedFilter()"}) %>
     <% end %>
   </div>
 </div>
