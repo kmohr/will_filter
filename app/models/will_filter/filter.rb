@@ -806,7 +806,7 @@ module WillFilter
           formats << frmt
         end
       end
-      formats
+      formats.sort
     end
 
     def custom_format?
