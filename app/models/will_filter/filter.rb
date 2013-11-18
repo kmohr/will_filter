@@ -102,7 +102,7 @@ module WillFilter
     end
 
     def format
-      @format ||= :html
+      @format ||= :csv
     end
 
     def fields
