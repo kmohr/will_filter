@@ -35,7 +35,7 @@
       <div class="end">
         <input type="text" class="post_email wf_grey_button" id="email" style="display:none" placeholder="Enter Email Address(es)">
         <%= link_to('<span>Queue Query</span>'.html_safe, '/query_queue', :class => "wf_grey_button wf_pcb post_queue_record") %>
-        <%= link_to('<span>Show Schedule</span>'.html_safe, '/', :class => "wf_grey_button wf_pcb schedule_record") %> |
+        <%= link_to('<span>Show Schedule</span>'.html_safe, 'javascript:;', :class => "wf_grey_button wf_pcb schedule_record") %> |
         Private Filter? <%= check_box_tag(:wf_private, "Y", Filter.get_private(wf_filter.key)) %>
         <%=link_to_function("<span>Save Query</span>".html_safe, "wfFilter.saveFilter(" + session[:encrypted_contact][:id].to_s + ")", :class => "wf_grey_button wf_pcb") %>
         <% if wf_filter.id %>
