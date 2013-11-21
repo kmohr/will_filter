@@ -255,25 +255,21 @@ module WillFilter
     end
 
     def order_type
+      @order_type ||= default_order_type unless @order
       @order_type ||= default_order_type
-      @order_type = default_order_type unless ['asc', 'desc'].include?(@order_type.to_s)
       @order_type
     end
 
     def order_type2
-      if !@order_type2.blank? && !@order_type.blank?
-        @order_type2
-        @order_type2 = nil unless ['asc', 'desc'].include?(@order_type2.to_s)
-        @order_type2
-      end
+      @order_type2 ||= default_order_type unless @order2
+      @order_type2 ||= default_order_type
+      @order_type2
     end
 
     def order_type3
-      if !@order_type3.blank? && !@order_type2.blank? && !@order_type.blank?
-        @order_type3
-        @order_type3 = nil unless ['asc', 'desc'].include?(@order_type3.to_s)
-        @order_type3
-      end
+      @order_type3 ||= default_order_type unless @order3
+      @order_type3 ||= default_order_type
+      @order_type3
     end
 
     def order_clause
