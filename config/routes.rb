@@ -28,6 +28,7 @@ WillFilter::Engine.routes.draw do
   match 'filter/remove_condition', :to => 'filter#remove_condition'
   match 'filter/remove_all_conditions', :to => 'filter#remove_all_conditions'
   match 'filter/load_filter', :to => 'filter#load_filter'
+  match 'filter/load_filter_order', :to => 'filter#load_filter_order'
   match 'filter/save_filter', :to => 'filter#save_filter'
   match 'filter/update_filter', :to => 'filter#update_filter'
   match 'filter/delete_filter', :to => 'filter#delete_filter'

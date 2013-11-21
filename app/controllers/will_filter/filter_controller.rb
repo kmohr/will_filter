@@ -63,6 +63,12 @@ module WillFilter
       wf_filter = wf_filter.load_filter!(params[:wf_key])
       render(:partial => '/will_filter/filter/conditions', :layout=>false, :locals => {:wf_filter => wf_filter})
     end
+
+    def load_filter_order
+      wf_filter = WillFilter::Filter.deserialize_from_params(params)
+      wf_filter = wf_filter.load_filter!(params[:wf_key])
+      render(:partial => '/will_filter/filter/conditions_footer', :layout=>false, :locals => {:wf_filter => wf_filter})
+    end
   
     def save_filter
       raise WillFilter::FilterException.new("Saving functions are disabled") unless  WillFilter::Config.saving_enabled?
