@@ -255,19 +255,19 @@ module WillFilter
     end
 
     def order_type
-      @order_type ||= default_order_type unless @order
+      @order_type = default_order_type unless @order
       @order_type ||= default_order_type
       @order_type
     end
 
     def order_type2
-      @order_type2 ||= default_order_type unless @order2
+      @order_type2 = default_order_type unless @order2
       @order_type2 ||= default_order_type
       @order_type2
     end
 
     def order_type3
-      @order_type3 ||= default_order_type unless @order3
+      @order_type3 = default_order_type unless @order3
       @order_type3 ||= default_order_type
       @order_type3
     end
