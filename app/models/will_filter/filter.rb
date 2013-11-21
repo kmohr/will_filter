@@ -341,6 +341,7 @@ module WillFilter
     def sort_options
       @sort_options ||= begin
         opts = []
+        opts << ["",""]
         definition.keys.each do |cond|
           opts << [condition_title_for(cond), cond.to_s]
         end
