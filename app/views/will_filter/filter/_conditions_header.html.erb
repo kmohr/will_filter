@@ -73,9 +73,9 @@
     <% end %>
     <% @daysofweek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %>
     <%= select_tag(:frequency, options_for_select(@frequencies), :prompt => "Frequency", :style => 'width:100px', :onChange => 'window.FrequencyToggler()') %>
-    <%=text_field_tag("startdate", "Start Date", :readonly => true, :style => 'width:15%; display:none', :onChange => 'wfFilter.fieldChanged(this)')%>
+    <%=text_field_tag("startdate", "Start Date", :readonly => true, :title => 'Click to Clear Date', :style => 'width:15%; display:none', :onChange => 'wfFilter.fieldChanged(this)')%>
     <%=link_to_function(image_tag("will_filter/calendar.png", :title => "Select start date", :class => "wf_calendar_trigger", :id => "startdatecal", :style => "display:none"), "wfCalendar.selectDate('startdate', this)")%>
-    <%=text_field_tag("enddate", "End Date", :readonly => true, :style => 'width:15%; display:none', :onChange => 'wfFilter.fieldChanged(this)')%>
+    <%=text_field_tag("enddate", "End Date", :readonly => true, :title => 'Click to Clear Date', :style => 'width:15%; display:none', :onChange => 'wfFilter.fieldChanged(this)')%>
     <%=link_to_function(image_tag("will_filter/calendar.png", :title => "Select end date", :class => "wf_calendar_trigger", :id => "enddatecal", :style => "display:none"), "wfCalendar.selectDate('enddate', this)")%>
     <div class="end">
       <%= select_tag(:dayofmonth, options_for_select(@days), :prompt=> "Day of Month", :style => 'width:120px; display:none') %>
